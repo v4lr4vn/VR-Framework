@@ -33,3 +33,6 @@ node_modules/
 .DS_Store
 Thumbs.db
 .replxx_history
+
+# Release files for the txAdmin recipe: upload them to the GitHub release, never commit them
+/release/
