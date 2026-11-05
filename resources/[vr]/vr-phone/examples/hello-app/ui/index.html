@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hello</title>
+  <!-- The phone's SDK: gives you VRPhone and the theme colours as CSS variables (--vr-bg, --vr-ink, --vr-accent ...). -->
+  <script src="https://cfx-nui-vr-phone/html/sdk.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--vr-bg, #f5f3fb);
+      color: var(--vr-ink, #17142a);
+      padding: 18px;
+    }
+    h1 { margin: 0 0 6px; font-size: 26px; }
+    p { margin: 6px 0; color: var(--vr-ink-2, #4b4764); }
+    .card { background: var(--vr-surface, #fff); border-radius: 16px; padding: 14px; margin: 12px 0; }
+    button, input {
+      font: inherit; border: 0; border-radius: 12px; padding: 10px 14px;
+      background: var(--vr-accent, #7a5cff); color: var(--vr-on-accent, #fff); font-weight: 700;
+    }
+    input { background: var(--vr-surface-2, #eeebf7); color: var(--vr-ink, #17142a); width: 100%; font-weight: 400; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; }
+    #sheet { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Hello</h1>
+  <p id="who">Waiting for the phone…</p>
+
+  <div class="card">
+    <p>Type here (the game stops reading keys as movement):</p>
+    <input id="text" placeholder="Say something" />
+  </div>
+
+  <div class="row">
+    <button id="time">Ask the game</button>
+    <button id="open">Open the sheet</button>
+    <button id="away">Put the phone away</button>
+  </div>
+  <p id="answer"></p>
+
+  <div class="card" id="sheet">
+    <p>A sheet. The phone's back button closes this first, then the app.</p>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    VRPhone.ready((info) => {
+      $('who').textContent = `Phone ${info.number}, ${info.dark ? 'dark' : 'light'} mode, ${info.fold}`;
+    });
+    VRPhone.on('fold', (info) => ($('who').textContent = `Folded: ${info.fold}`));
+    VRPhone.on('theme', (info) => ($('who').textContent = info.dark ? 'Dark mode' : 'Light mode'));
+
+    // The back button: close the sheet if it is open. Anything but `true` goes to the home screen.
+    VRPhone.onBack(() => {
+      if ($('sheet').style.display === 'block') {
+        $('sheet').style.display = 'none';
+        return true;
+      }
+      return false;
+    });
+
+    $('open').onclick = () => ($('sheet').style.display = 'block');
+    $('away').onclick = () => VRPhone.close();
+    $('time').onclick = async () => {
+      try {
+        const r = await VRPhone.post('hello:time'); // RegisterNUICallback('hello:time') in client.lua
+        $('answer').textContent = `Game time ${r.time}`;
+      } catch (e) {
+        $('answer').textContent = 'Only works inside the game.';
+      }
+    };
+  </script>
+</body>
+</html>

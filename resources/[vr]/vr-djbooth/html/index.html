@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>vr-djbooth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="panel" class="panel" hidden>
+        <header class="head">
+            <div class="head-icon" id="headIcon"></div>
+            <div class="head-text">
+                <div class="name-row">
+                    <span class="name" id="sysName"></span>
+                    <input class="name-input" id="nameInput" maxlength="32" spellcheck="false" hidden>
+                    <button class="icon-btn tiny" id="renameBtn" title="Rename" hidden></button>
+                </div>
+                <div class="sub" id="sysSub"></div>
+            </div>
+            <button class="icon-btn" id="closeBtn" title="Close (Esc)"></button>
+        </header>
+
+        <section class="now">
+            <div class="now-top">
+                <div class="art" id="art"><i></i><i></i><i></i><i></i></div>
+                <div class="now-text">
+                    <div class="now-title" id="nowTitle"></div>
+                    <div class="now-meta" id="nowMeta"></div>
+                </div>
+            </div>
+            <div class="progress" id="progress">
+                <div class="track" id="progressTrack"><div class="fill" id="progressFill"></div></div>
+                <div class="times"><span id="timeCur">0:00</span><span id="timeDur">0:00</span></div>
+            </div>
+            <div class="controls">
+                <button class="ctl toggle" id="loopBtn" title="Repeat"></button>
+                <button class="ctl" id="stopBtn" title="Stop"></button>
+                <button class="ctl play" id="playBtn" title="Play"></button>
+                <button class="ctl" id="skipBtn" title="Next song"></button>
+                <button class="ctl toggle" id="shuffleBtn" title="Shuffle"></button>
+            </div>
+            <div class="volume" title="Volume">
+                <span class="vol-icon" id="volIcon"></span>
+                <input type="range" id="volume" min="0" max="100" step="1">
+                <span class="vol-value" id="volValue">50%</span>
+            </div>
+            <div class="volume range-row" title="How far away it can be heard">
+                <span class="vol-icon" id="rangeIcon"></span>
+                <input type="range" id="range" min="5" max="100" step="5">
+                <span class="vol-value range-value" id="rangeValue">25 m</span>
+                <button class="reset-btn" id="rangeReset" title="Back to each speaker's own range" hidden>Reset</button>
+            </div>
+        </section>
+
+        <form class="add" id="addForm" autocomplete="off">
+            <input id="addUrl" placeholder="Paste a YouTube or audio link" spellcheck="false">
+            <button type="submit" class="add-btn" id="addBtn" title="Add to queue"></button>
+        </form>
+
+        <nav class="tabs" id="tabs">
+            <button class="tab-btn active" data-tab="queue">Queue <span class="count" id="queueCount"></span></button>
+            <button class="tab-btn" data-tab="speakers" id="speakersTabBtn">Speakers <span class="count" id="speakerCount"></span></button>
+        </nav>
+
+        <div class="tab-body" id="tab-queue">
+            <ul class="list" id="queue"></ul>
+            <div class="empty" id="queueEmpty">The queue is empty. Paste a link above to add a song.</div>
+            <div class="foot" id="queueFoot">
+                <button class="text-btn" id="clearBtn">Clear queue</button>
+            </div>
+        </div>
+
+        <div class="tab-body" id="tab-speakers" hidden>
+            <div class="section-label">In this group</div>
+            <ul class="list" id="speakers"></ul>
+            <div class="section-label">Nearby speakers you can link <span class="hint" id="linkHint">within 20 m</span></div>
+            <ul class="list" id="nearby"></ul>
+            <div class="empty small" id="nearbyEmpty">No other speakers in range.</div>
+        </div>
+
+        <div class="foot vehicle-foot" id="vehicleFoot" hidden>
+            <button class="text-btn danger" id="uninstallBtn">Remove sound system</button>
+        </div>
+
+        <div class="toasts" id="toasts"></div>
+    </div>
+
+    <div id="confirm" class="confirm-backdrop" hidden>
+        <div class="confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+            <div class="confirm-icon" id="confirmIcon"></div>
+            <div class="confirm-title" id="confirmTitle"></div>
+            <div class="confirm-text" id="confirmText"></div>
+            <div class="confirm-actions">
+                <button class="btn ghost" id="confirmNo"></button>
+                <button class="btn primary" id="confirmYes"></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="placeLink" class="place-link" hidden><span class="link-dot"></span><span id="placeLinkText"></span></div>
+
+    <div id="placement" class="placement" hidden>
+        <span class="dot" id="placeDot"></span>
+        <span class="place-label" id="placeLabel"></span>
+        <span class="place-reason" id="placeReason"></span>
+        <span class="keys">
+            <span><kbd>E</kbd> Place</span>
+            <span><kbd>Scroll</kbd> Turn</span>
+            <span><kbd>Shift</kbd> Fine</span>
+            <span><kbd>Backspace</kbd> Cancel</span>
+        </span>
+    </div>
+
+    <div id="players" aria-hidden="true"></div>
+
+    <script src="audio.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

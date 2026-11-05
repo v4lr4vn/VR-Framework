@@ -1,0 +1,68 @@
+## ValRavn Framework example server.cfg
+## Copy to server.cfg and fill in the values marked EDIT. Never commit server.cfg.
+
+## EDIT: server identity
+sv_hostname "My ValRavn Server"
+sets sv_projectName "My ValRavn Server"
+sets sv_projectDesc "A roleplay server on the ValRavn Framework"
+sets tags "roleplay"
+sets locale "en-US"
+
+## EDIT: licence key from https://portal.cfx.re/ and your database
+sv_licenseKey "YOUR_CFX_LICENSE_KEY"
+set mysql_connection_string "mysql://USER:PASSWORD@localhost/DATABASE?charset=utf8mb4"
+
+## You CAN edit the following
+sv_enforceGameBuild 3751
+sv_maxclients 48
+endpoint_add_tcp "0.0.0.0:30120"
+endpoint_add_udp "0.0.0.0:30120"
+set steam_webApiKey "none"
+set resources_useSystemChat true
+
+## Base resources (baseevents feeds vehicle enter/exit events to vr-core and vr-mdt)
+ensure chat
+ensure baseevents
+
+## Framework settings
+setr sv_stateBagStrictMode true
+set sv_endpointPrivacy true
+set sv_filterRequestControl 1
+set sv_enableNetworkedSounds false
+setr vr-clothing:printlevel 2
+
+## [important]: started one by one, in this order (vr-target must come after vr-core)
+ensure vr-mysql
+ensure vr-core
+ensure vr-ui
+ensure vr-lib
+ensure vr-keybinds
+ensure vr-bridge
+ensure vr-voice
+ensure vr-target
+ensure vr-inventory
+ensure fivem-freecam
+ensure bob74_ipl
+
+## [vr]: everything else, alphabetically
+ensure [vr]
+
+## Bring your own assets. Remove the lines you do not use.
+ensure [maps]
+#ensure [cars]
+ensure [clothing]
+
+## Admins
+add_ace command.garage command allow
+add_ace group.admin command allow       # allow all commands
+add_ace group.admin command.quit deny   # but not quit
+#add_principal identifier.fivem:YOUR_FIVEM_ID group.admin   # EDIT: your own identifier
+
+## vr-core permissions (vr-core sets up its own aces, so it needs command rights)
+add_ace resource.vr-core command allow
+add_principal group.admin vrcore.god    # server admins get every vr-core level
+add_principal vrcore.god vrcore.admin
+add_principal vrcore.admin vrcore.mod
+
+## vr-voice
+setr voice_useNativeAudio true

@@ -1,0 +1,218 @@
+/* Pieces the app screens share (head, search box, forms, buttons, empty states).
+   Every class starts with ap- so it cannot clash with an app's own styles. */
+.ap-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.ap-head h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+.ap-tools {
+  display: flex;
+  gap: 8px;
+}
+.ap-plus {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.ap-round {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--ink);
+}
+.ap-round:disabled {
+  opacity: 0.4;
+}
+.ap-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 40px;
+  margin-bottom: 8px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  color: var(--ink-3);
+}
+.ap-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  font-size: 15px;
+  color: var(--ink);
+}
+.ap-search input:focus-visible {
+  outline: none;
+}
+.ap-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ap-form h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+.ap-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ap-form label > span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ap-form input,
+.ap-form select,
+.ap-form textarea {
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--ink);
+}
+.ap-form input,
+.ap-form select {
+  height: 46px;
+}
+.ap-form textarea {
+  padding: 12px 14px;
+  min-height: 110px;
+  resize: none;
+  line-height: 1.45;
+}
+.ap-form .ap-two {
+  display: flex;
+  gap: 10px;
+}
+.ap-form .ap-two > label {
+  flex: 1;
+  min-width: 0;
+}
+.ap-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.ap-btn {
+  padding: 11px 18px;
+  border-radius: 14px;
+  background: var(--surface-2);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.ap-btn.main {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.ap-btn.red {
+  color: #e5484d;
+}
+.ap-btn:disabled {
+  opacity: 0.45;
+}
+.ap-err {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #e5484d;
+}
+.ap-note {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--ink-3);
+}
+.ap-none {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+  color: var(--ink-3);
+  text-align: center;
+}
+.ap-none p {
+  margin: 0;
+  font-size: 14.5px;
+}
+.ap-empty {
+  margin: 28px 8px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-3);
+}
+.ap-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ap-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 10px;
+  border-radius: 14px;
+  text-align: left;
+  color: var(--ink);
+}
+.ap-row:hover {
+  background: var(--surface-2);
+}
+.ap-row.on {
+  background: var(--accent-soft);
+}
+.ap-label {
+  margin: 14px 4px 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.ap-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ap-chip {
+  padding: 8px 14px;
+  border-radius: 18px;
+  background: var(--surface-2);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ap-chip.on {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.ap-ghost {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 13px;
+}

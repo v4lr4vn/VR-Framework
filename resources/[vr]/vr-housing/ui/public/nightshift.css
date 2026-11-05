@@ -1,0 +1,69 @@
+/* Night Shift theme for vr-housing (matches vr-ui).
+   Loaded after the compiled bundle, so it only has to override tokens and the
+   handful of hard-coded Tailwind colours. Fonts are local - no CDN needed. */
+@font-face{font-family:'IBM Plex Sans Condensed';font-weight:400;font-style:normal;font-display:swap;src:url('./fonts/ibm-plex-sans-condensed-latin-400-normal-DKyD6XsY.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Sans Condensed';font-weight:500;font-style:normal;font-display:swap;src:url('./fonts/ibm-plex-sans-condensed-latin-500-normal-BqaLkUoX.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Sans Condensed';font-weight:600;font-style:normal;font-display:swap;src:url('./fonts/ibm-plex-sans-condensed-latin-600-normal-CRd5VyFf.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Sans Condensed';font-weight:700;font-style:normal;font-display:swap;src:url('./fonts/ibm-plex-sans-condensed-latin-700-normal-D8r4s4aS.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-weight:400;font-style:normal;font-display:swap;src:url('./fonts/ibm-plex-mono-latin-400-normal-DMJ8VG8y.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-weight:500;font-style:normal;font-display:swap;src:url('./fonts/ibm-plex-mono-latin-500-normal-DSY6xOcd.woff2') format('woff2')}
+
+:root{
+  --bg:#0A0E14; --bg-2:#0D121A; --panel:#111823; --panel-2:#1A2433; --panel-3:#24324A;
+  --line:#1E2938; --line-2:#223042; --line-3:#2B3A50;
+  --text:#E6EDF5; --muted:#8A9AB0;
+  --accent:#F5A524; --accent-2:#FFC85C; --accent-ink:#0A0E14;
+  --ok:#3DD68C; --danger:#FF5A52; --info:#5AA9FF;
+  --radius:6px; --radius-lg:8px;
+  --font:'IBM Plex Sans Condensed','Segoe UI',sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  /* the tokens the housing bundle already reads */
+  --color-primary:var(--bg-2);
+  --color-secondary:var(--panel);
+  --color-tertiary:var(--panel-2);
+  --color-accent:var(--accent);
+  --color-text:var(--text);
+}
+
+*{font-family:var(--font) !important;color:var(--text)}
+.fa,.fas,.far,.fab,.fa-solid,.fa-regular,.fa-brands,[class^="fa-"],[class*=" fa-"]{font-family:inherit}
+.fa-solid,.fas{font-family:"Font Awesome 6 Free" !important}
+.fa-regular,.far{font-family:"Font Awesome 6 Free" !important}
+.fa-brands,.fab{font-family:"Font Awesome 6 Brands" !important}
+html,body{background:transparent}
+
+/* panels: flat, 1px hairline, small radius - like the rest of the UI */
+[class*="bg-[color:var(--color-secondary)]"],
+[class*="bg-[color:var(--color-primary)]"]{border:1px solid var(--line-2);border-radius:var(--radius-lg)}
+[class*="bg-[color:var(--color-tertiary)]"]{border:1px solid var(--line-3);border-radius:var(--radius)}
+button,input,select,textarea{border-radius:var(--radius)}
+button{transition:background-color .12s,border-color .12s,filter .12s}
+button:hover{filter:brightness(1.12)}
+button:focus-visible,input:focus-visible{outline:1px solid var(--accent);outline-offset:1px}
+
+/* primary action (Purchase) = amber with dark ink */
+button[class*="bg-[color:var(--color-accent)]"]{background-color:var(--accent);border:1px solid var(--accent-2);color:var(--accent-ink);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+button[class*="bg-[color:var(--color-accent)]"] *{color:var(--accent-ink)}
+.text-\[color\:var\(--color-accent\)\]{color:var(--accent)}
+
+/* hard-coded Tailwind colours */
+.bg-neutral-700{background-color:transparent}
+.bg-black{background-color:#000}
+.bg-gray-800{background-color:var(--panel-2)}
+.bg-gray-600{background-color:var(--panel-3)}
+.bg-red-500{background-color:var(--danger)}
+.bg-blue-500{background-color:var(--accent)}
+.text-white,.text-\[white\]{color:var(--text)}
+.bg-blue-500,.bg-blue-500 *{color:var(--accent-ink)}
+
+/* selected category tab */
+.selected{background-color:var(--panel-2) !important;box-shadow:inset 0 -2px 0 var(--accent)}
+
+/* inputs + slider */
+input,textarea,select{background:var(--bg-2);border:1px solid var(--line-3);color:var(--text)}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+input#slider[type='range']::-webkit-slider-runnable-track{background:var(--panel-2);border:1px solid var(--line-3);border-radius:var(--radius)}
+input#slider[type='range']::-webkit-slider-thumb{background:var(--accent);border-radius:var(--radius)}
+.scroll-style::-webkit-scrollbar-track{background:var(--bg-2)}
+.scroll-style::-webkit-scrollbar-thumb{background:var(--line-3);border-radius:4px}
+.scroll-style::-webkit-scrollbar-thumb:hover{background:var(--accent)}

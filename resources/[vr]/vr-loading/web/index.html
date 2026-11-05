@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loading</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="bg" aria-hidden="true">
+    <div id="slides"></div>
+    <div id="sky"></div>
+    <div id="city"></div>
+    <div id="shade"></div>
+  </div>
+
+  <main id="stage">
+    <section id="left">
+      <header id="brand">
+        <div id="mark"><span id="markName">VALRAVN</span></div>
+        <div id="markSub"><span id="markSuffix">ROLEPLAY</span><i></i><span id="markTag"></span></div>
+      </header>
+
+      <div id="hello">
+        <h1><span id="welcomeWord">Welcome</span><span id="welcomeName"></span></h1>
+        <p id="subtitle"></p>
+      </div>
+
+      <div id="load">
+        <div id="loadTop">
+          <span id="stageLabel">Connecting</span>
+          <span id="pct">0%</span>
+        </div>
+        <div id="bar"><div id="fill"></div><div id="sheen"></div></div>
+        <div id="loadBottom">
+          <span id="tip"></span>
+          <span id="clock">00:00</span>
+        </div>
+      </div>
+    </section>
+
+    <aside id="right">
+      <section class="panel" id="newsPanel">
+        <h2>What's new</h2>
+        <ul id="news"></ul>
+      </section>
+      <section class="panel" id="rulesPanel" hidden>
+        <h2>House rules</h2>
+        <ul id="rules"></ul>
+      </section>
+      <section class="panel" id="staffPanel" hidden>
+        <h2>Staff</h2>
+        <ul id="staff"></ul>
+      </section>
+      <section class="panel" id="linksPanel" hidden>
+        <h2>Find us</h2>
+        <ul id="links"></ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer id="player" hidden>
+    <button id="prev" title="Previous track (Left)" aria-label="Previous track">
+      <svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg>
+    </button>
+    <button id="play" title="Play / pause (Space)" aria-label="Play or pause">
+      <svg id="icoPause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      <svg id="icoPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <button id="next" title="Next track (Right)" aria-label="Next track">
+      <svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5l11 7L4 19z"/></svg>
+    </button>
+    <div id="np"><b id="npTitle"></b><span id="npArtist"></span></div>
+    <label id="vol" title="Volume (Up / Down)">
+      <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9zM16 8a5 5 0 0 1 0 8z"/></svg>
+      <input id="volume" type="range" min="0" max="100" step="1" value="20" aria-label="Volume">
+    </label>
+    <span id="credit"></span>
+  </footer>
+
+  <audio id="audio" preload="auto"></audio>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

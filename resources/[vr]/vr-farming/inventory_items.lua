@@ -1,0 +1,27 @@
+-- These are added to vr-inventory/data/items.lua for you by the install package.
+-- If you install by hand, paste the lines below inside the returned table.
+
+	-- vr-farming items (crops, seeds and tools)
+	['wheat'] = { label = 'Wheat', weight = 300, close = true, description = 'Golden wheat, ready to be milled or brewed' },
+	['corn'] = { label = 'Corn', weight = 350, close = true, description = 'Fresh sweetcorn on the cob' },
+	['potato'] = { label = 'Potatoes', weight = 300, close = true, description = 'Muddy potatoes from the field' },
+	['carrot'] = { label = 'Carrots', weight = 250, close = true, description = 'Crunchy orange carrots' },
+	['cucumber'] = { label = 'Cucumbers', weight = 250, close = true, description = 'Cool crunchy cucumbers' },
+	['onion'] = { label = 'Onions', weight = 250, close = true, description = 'Pungent onions' },
+	['lettuce'] = { label = 'Lettuce', weight = 250, close = true, description = 'A crisp head of lettuce' },
+	['tomato'] = { label = 'Tomatoes', weight = 250, close = true, description = 'Ripe tomatoes' },
+	['pumpkin'] = { label = 'Pumpkins', weight = 900, close = true, description = 'A heavy pumpkin' },
+	['strawberry'] = { label = 'Strawberries', weight = 150, close = true, description = 'Sweet strawberries' },
+	['grapes'] = { label = 'Grapes', weight = 200, close = true, description = 'Bunches of grapes' },
+	['hops'] = { label = 'Hops', weight = 150, close = true, description = 'Fresh hops for brewing' },
+	['wheat_seed'] = { label = 'Wheat Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['corn_seed'] = { label = 'Corn Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['potato_seed'] = { label = 'Potatoe Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['carrot_seed'] = { label = 'Carrot Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['cucumber_seed'] = { label = 'Cucumber Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['onion_seed'] = { label = 'Onion Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['lettuce_seed'] = { label = 'Lettuce Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['tomato_seed'] = { label = 'Tomatoe Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['pumpkin_seed'] = { label = 'Pumpkin Seeds', weight = 10, close = true, description = 'Plant these in a field' },
+	['watering_can'] = { label = 'Watering Can', weight = 900, stack = false, close = true, description = 'Fill it at a well, then water your crops' },
+	['fertiliser'] = { label = 'Fertiliser', weight = 500, close = true, description = 'Makes a crop grow faster and give more' },

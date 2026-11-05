@@ -1,0 +1,29 @@
+{
+  "err": {
+    "no_phone": "You do not have a phone.",
+    "no_identity": "Your character is not ready yet.",
+    "not_ready": "The phone is still starting up. Try again in a moment.",
+    "busy": "Slow down a little.",
+    "timeout": "The phone did not answer. Try again.",
+    "locked": "Unlock the phone first.",
+    "no_service": "No service.",
+    "in_call": "You are already in a call.",
+    "no_call": "That call is over.",
+    "unavailable": "That number is not available.",
+    "not_in_service": "That number is not in service.",
+    "invalid_number": "That is not a phone number.",
+    "self": "You cannot do that with your own number.",
+    "line_busy": "That line is busy."
+  },
+  "keybind": "Take out or put away the phone",
+  "keybindAnswer": "Answer a phone call",
+  "keybindHangup": "Hang up or decline a phone call",
+  "charging": {
+    "plugging": "Plugging in the power bank...",
+    "charged": "The power bank charged your phone.",
+    "full": "Your phone is already charged.",
+    "busy": "Give it a moment.",
+    "no_phone": "You do not have a phone to charge.",
+    "no_pack": "The power bank is gone."
+  }
+}

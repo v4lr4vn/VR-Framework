@@ -1,0 +1,18 @@
+.ctl {
+  position: relative; display: flex; align-items: center; height: 36px; width: 100%;
+  border-radius: var(--radius); border: 1px solid var(--line-2); background: var(--bg-2); color: var(--text);
+  transition: border-color 0.12s;
+}
+.ctl:focus-within, .ctl.open { border-color: var(--accent); }
+.ctl.bad { border-color: var(--danger); }
+.ctl.off { opacity: 0.55; }
+.ctl input { flex: 1; min-width: 0; height: 100%; border: 0; outline: none; background: transparent; padding: 0 12px; color: var(--text); }
+.ctl input::placeholder { color: var(--faint); }
+.ctl .lead { flex: none; width: 34px; display: inline-flex; align-items: center; justify-content: center; color: var(--faint); margin-right: -8px; }
+.ctl .tail { flex: none; display: inline-flex; align-items: center; gap: 2px; padding-right: 6px; color: var(--faint); }
+.ctl .tbtn { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; border: 0; background: transparent; color: var(--faint); }
+.ctl .tbtn:hover { background: var(--panel-2); color: var(--text); }
+.pop {
+  position: fixed; z-index: 100; background: var(--panel); border: 1px solid var(--line-3); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow); padding: 6px; pointer-events: auto;
+}

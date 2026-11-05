@@ -1,0 +1,5 @@
+Config.AutoAlertWeapons = {
+    silenced = {
+        `WEAPON_STUNGUN`, `WEAPON_PETROLCAN`, `WEAPON_FIREEXTINGUISHER`, `WEAPON_BALL`, `WEAPON_SNOWBALL`, `WEAPON_FLARE`,
+    },
+}

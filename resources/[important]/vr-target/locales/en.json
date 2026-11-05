@@ -1,0 +1,10 @@
+{
+  "toggle_front_driver_door": "Front driver door",
+  "toggle_front_passenger_door": "Front passenger door",
+  "toggle_rear_driver_door": "Rear driver door",
+  "toggle_rear_passenger_door": "Rear passenger door",
+  "toggle_hood": "Hood",
+  "toggle_trunk": "Trunk",
+  "toggle_targeting": "Target (third eye)",
+  "go_back": "Go back"
+}

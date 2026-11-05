@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>vr-phone music player</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>html,body{margin:0;background:#000;overflow:hidden}#p{width:200px;height:200px}</style>
+</head>
+<body>
+<div id="p"></div>
+<script>
+// The player page for vr-phone's Music app. It holds one YouTube embedded player and does what the phone's screen tells it
+// (through postMessage). It has to come from a real web address: YouTube refuses to play for a page that has none.
+// You can host this exact file on any web page you own and put its address in Config.Phone.Music.player.
+(function () {
+  var parentWin = window.parent;
+  var player = null, ready = false;
+  var loaded = '', want = { vid: '', pos: 0, paused: false }, volume = 0, durationFor = '';
+  var waiting = { sync: null, volume: null };
+
+  function send(message) {
+    message.vr = 'player';
+    try { parentWin.postMessage(message, '*'); } catch (e) {}
+  }
+
+  function setVolume(v) {
+    volume = Math.max(0, Math.min(100, Math.round(Number(v) || 0)));
+    if (ready) { try { player.setVolume(volume); } catch (e) {} }
+  }
+
+  function sync(m) {
+    want = { vid: String(m.vid || ''), pos: Math.max(0, Number(m.pos) || 0), paused: m.paused === true };
+    if (!/^[A-Za-z0-9_-]{11}$/.test(want.vid)) return;
+    if (loaded !== want.vid) {
+      loaded = want.vid;
+      durationFor = '';
+      player.loadVideoById({ videoId: want.vid, startSeconds: want.pos });
+      return;
+    }
+    var now = 0;
+    try { now = player.getCurrentTime(); } catch (e) {}
+    if (Math.abs(now - want.pos) > 1.5) player.seekTo(want.pos, true);
+    if (want.paused) player.pauseVideo(); else player.playVideo();
+  }
+
+  function run(m) {
+    try {
+      if (m.cmd === 'volume') setVolume(m.vol);
+      else if (m.cmd === 'sync') sync(m);
+    } catch (e) {
+      send({ type: 'error', code: 'script' });
+    }
+  }
+
+  window.addEventListener('message', function (e) {
+    if (e.source !== parentWin) return;
+    var m = e.data;
+    if (!m || m.vr !== 'cmd') return;
+    if (!ready) {
+      if (m.cmd === 'sync') waiting.sync = m;
+      else if (m.cmd === 'volume') waiting.volume = m;
+      return;
+    }
+    run(m);
+  });
+
+  function onState(e) {
+    // 1 playing, 2 paused, 0 ended
+    if (e.data === 1) {
+      try { player.setVolume(volume); } catch (x) {}
+      if (want.paused) { try { player.pauseVideo(); } catch (x) {} }
+      var d = 0;
+      try { d = player.getDuration(); } catch (x) {}
+      if (d > 0 && durationFor !== loaded) {
+        durationFor = loaded;
+        send({ type: 'duration', vid: loaded, seconds: Math.round(d) });
+      }
+    } else if (e.data === 0) {
+      send({ type: 'ended', vid: loaded });
+    }
+  }
+
+  window.onYouTubeIframeAPIReady = function () {
+    var vars = { autoplay: 1, controls: 0, disablekb: 1, fs: 0, rel: 0, playsinline: 1, iv_load_policy: 3, enablejsapi: 1 };
+    if (/^https?:$/.test(location.protocol)) vars.origin = location.origin;
+    player = new YT.Player('p', {
+      width: '200', height: '200', playerVars: vars,
+      events: {
+        onReady: function () {
+          ready = true;
+          try { player.unMute(); } catch (x) {}
+          send({ type: 'ready' });
+          if (waiting.volume) run(waiting.volume);
+          if (waiting.sync) run(waiting.sync);
+          waiting = { sync: null, volume: null };
+        },
+        onStateChange: onState,
+        onError: function (e) { send({ type: 'error', code: String(e.data), vid: loaded }); }
+      }
+    });
+  };
+
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  tag.onerror = function () { send({ type: 'error', code: 'api' }); };
+  document.head.appendChild(tag);
+})();
+</script>
+</body>
+</html>

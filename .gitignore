@@ -1,0 +1,35 @@
+# Secrets and local server state: never commit these
+server.cfg
+server.cfg.bkp
+*.env
+.env*
+cache/
+db/
+logs/
+crashes/
+*--logs/
+txData/
+*.log
+
+# Local deployment tooling and backups
+_originals/
+_removed/
+_to_delete/
+*.tgz
+
+# Third-party assets: not ours to redistribute, bring your own
+resources/\[maps\]/
+resources/\[clothing\]/
+resources/\[cars\]/
+resources/lvc/
+resources/wk_wars2x/
+resources/zapquake/
+
+# Installed separately (see README)
+resources/\[important\]/baseevents/
+
+# Build output
+node_modules/
+.DS_Store
+Thumbs.db
+.replxx_history

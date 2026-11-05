@@ -1,0 +1,22 @@
+html,
+body {
+    margin: 0;
+    background: transparent;
+    overflow: hidden;
+    user-select: none;
+}
+
+.voice-info {
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    text-align: right;
+    font: 700 12px Avenir, Helvetica, Arial, sans-serif;
+    color: #949697;
+    text-shadow: 1.25px 0 0 #000, 0 -1.25px 0 #000, 0 1.25px 0 #000, -1.25px 0 0 #000;
+    pointer-events: none;
+}
+
+.voice-info p { margin: 0; }
+.talking { color: rgba(255, 255, 255, 0.82); }
+.hidden { display: none; }

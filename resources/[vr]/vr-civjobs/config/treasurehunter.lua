@@ -1,0 +1,55 @@
+Config.Jobs.treasurehunter = {
+    label = 'Treasure Hunter',
+    job = 'treasurehunter',
+    icon = 'fa-gem',
+    description = 'Sweep the beaches with a metal detector or dive the wrecks, then sell your finds',
+    depot = {
+        ped = 'a_m_m_beach_01',
+        coords = vec4(-1604.7, -1121.3, 2.2, 130.0),
+        blip = { sprite = 478, colour = 5, scale = 0.8, label = 'Treasure Hunter' },
+    },
+    boat = { model = 'dinghy', coords = vec4(-1613.0, -1136.0, 0.2, 130.0), returnRadius = 60.0 },
+    detector = {
+        zones = {
+            { label = 'Vespucci Beach', center = vec3(-1560.0, -1150.0, 2.1), radius = 140.0 },
+            { label = 'Pacific Bluffs', center = vec3(-1950.0, -460.0, 11.5), radius = 110.0 },
+        },
+        spotsPerZone = 5,
+        pingRange = 45.0,
+        digRange = 3.0,
+        digSeconds = 8,
+    },
+    dive = {
+        sites = {
+            { label = 'Wreck off Del Perro', coords = vec3(-2310.0, -1320.0, -38.0), radius = 60.0 },
+            { label = 'Reef off Pacific Bluffs', coords = vec3(-2560.0, -690.0, -33.0), radius = 60.0 },
+            { label = 'Chumash drop-off', coords = vec3(-3380.0, 650.0, -30.0), radius = 60.0 },
+        },
+        tankSeconds = 300,
+        openSeconds = 9,
+        chestModel = 'prop_box_wood02a',
+    },
+    lootGround = {
+        { item = 'junk_can', label = 'Crushed can', weight = 38, price = 6, amount = { 1, 3 } },
+        { item = 'junk_bottle', label = 'Old bottle', weight = 28, price = 10, amount = { 1, 2 } },
+        { item = 'old_coin', label = 'Old coin', weight = 18, price = 40, amount = { 1, 3 } },
+        { item = 'silver_ring', label = 'Silver ring', weight = 9, price = 120, amount = { 1, 1 } },
+        { item = 'pocket_watch', label = 'Pocket watch', weight = 5, price = 220, amount = { 1, 1 } },
+        { item = 'gold_ring', label = 'Gold ring', weight = 2, price = 380, amount = { 1, 1 } },
+    },
+    lootDive = {
+        { item = 'old_coin', label = 'Old coin', weight = 30, price = 40, amount = { 2, 5 } },
+        { item = 'gold_nugget', label = 'Gold nugget', weight = 25, price = 210, amount = { 1, 2 } },
+        { item = 'ancient_coin', label = 'Ancient coin', weight = 22, price = 330, amount = { 1, 2 } },
+        { item = 'ruby', label = 'Ruby', weight = 14, price = 520, amount = { 1, 1 } },
+        { item = 'relic_idol', label = 'Relic idol', weight = 9, price = 900, amount = { 1, 1 } },
+    },
+    prices = {
+        junk_can = 6, junk_bottle = 10, old_coin = 40, silver_ring = 120, pocket_watch = 220,
+        gold_ring = 380, gold_nugget = 210, ancient_coin = 330, ruby = 520, relic_idol = 900,
+    },
+    levelLuckPerLevel = 0.6,
+    xpPerFind = 30,
+    xpPerChest = 90,
+    minSecondsBetweenFinds = 5,
+}

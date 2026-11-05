@@ -1,0 +1,48 @@
+/* Colours and sizes shared by the whole phone.
+   Written for the game's built-in browser: no color-mix(), :has(), dvh units or CSS nesting.
+   No backdrop-filter either: over the game's see-through page it can draw black boxes.
+   The accent colours (--accent, --accent-rgb, --accent-light, --accent-dark, --on-accent) are set from the settings in JS. */
+:root {
+  --accent: #7a5cff;
+  --accent-rgb: 122, 92, 255;
+  --accent-light: #9d86ff;
+  --accent-dark: #5a3fd6;
+  --on-accent: #ffffff;
+
+  --font: 'Segoe UI Variable Text', 'Segoe UI', 'Inter', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Cascadia Mono', 'Consolas', 'SF Mono', ui-monospace, monospace;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --r-s: 10px;
+  --r-m: 16px;
+  --r-l: 24px;
+}
+
+.theme-light {
+  --bg: #f5f3fb;
+  --surface: #ffffff;
+  --surface-2: #eeebf7;
+  --surface-3: #e2def0;
+  --ink: #17142a;
+  --ink-2: #4b4764;
+  --ink-3: #7f7b98;
+  --line: rgba(23, 20, 42, 0.1);
+  --glass: rgba(255, 255, 255, 0.88);
+  --glass-line: rgba(255, 255, 255, 0.55);
+  --accent-soft: rgba(var(--accent-rgb), 0.12);
+}
+
+.theme-dark {
+  --bg: #100e1b;
+  --surface: #1a1728;
+  --surface-2: #242036;
+  --surface-3: #2f2a46;
+  --ink: #f2effc;
+  --ink-2: #c4bfdc;
+  --ink-3: #8e89aa;
+  --line: rgba(255, 255, 255, 0.1);
+  --glass: rgba(30, 27, 46, 0.88);
+  --glass-line: rgba(255, 255, 255, 0.12);
+  --accent-soft: rgba(var(--accent-rgb), 0.22);
+}

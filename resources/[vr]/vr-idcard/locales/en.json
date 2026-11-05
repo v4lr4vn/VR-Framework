@@ -1,0 +1,21 @@
+{
+  "header": "San Andreas",
+  "lastname": "Last Name",
+  "firstname": "First Name",
+  "dob": "Date of Birth",
+  "sex": "Sex",
+  "nat": "Nationality",
+  "height": "Height",
+  "renew": {
+    "title": "Card renewed",
+    "description": "Your old card was swapped for a new one."
+  },
+  "update_mugshot": {
+    "title": "Photo",
+    "description": "Taking the photo for your card."
+  },
+  "show_idcard": {
+    "title": "Card shown",
+    "description": "You showed your card to the person next to you."
+  }
+}

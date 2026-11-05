@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vr-multicharacter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="v-none">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-6h4v6"/></g></symbol>
+    <symbol id="i-work" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></g></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></g></symbol>
+    <symbol id="i-fit" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div id="shade"></div>
+<div id="solid"></div>
+
+<div id="stage">
+
+  <!-- character select -->
+  <section class="view" id="v-select" hidden>
+    <div class="brand"><i></i><b>VALRAVN</b></div>
+    <div class="corner"><span class="dot"></span><span id="slotcount"></span></div>
+
+    <div id="list">
+      <div class="kicker" id="t-chars">YOUR CHARACTERS</div>
+      <h1 id="t-who">Who are you<br>tonight?</h1>
+      <div id="cards"></div>
+    </div>
+
+    <div id="stagebox">
+      <div id="drag" aria-hidden="true"></div>
+      <div id="plate"><b id="plate-name"></b><span id="plate-sub"></span></div>
+      <div class="tools" id="tools-select"></div>
+    </div>
+
+    <aside id="details" class="panel"></aside>
+
+    <div class="hints">
+      <span><kbd>↑ ↓</kbd>Select</span>
+      <span><kbd>ENTER</kbd>Play</span>
+      <span><kbd>N</kbd>New character</span>
+      <span><kbd>DRAG</kbd>Rotate</span>
+      <span class="fill"></span>
+      <span id="tagline"></span>
+    </div>
+  </section>
+
+  <!-- create -->
+  <section class="view" id="v-create" hidden>
+    <div class="brand"><i></i><b>VALRAVN</b></div>
+    <div class="corner"><span id="slotof"></span></div>
+
+    <form id="form" class="panel" autocomplete="off">
+      <div>
+        <div class="kicker">NEW CHARACTER</div>
+        <h1>Who are you?</h1>
+      </div>
+      <div class="two">
+        <div><label for="f-first">First name</label><input id="f-first" type="text" maxlength="16"></div>
+        <div><label for="f-last">Last name</label><input id="f-last" type="text" maxlength="16"></div>
+      </div>
+      <div><label for="f-dob">Date of birth <small id="f-age"></small></label><input id="f-dob" type="date" min="1900-01-01"></div>
+      <div>
+        <div class="lbl">Gender</div>
+        <div class="seg" id="f-gender">
+          <button type="button" data-g="0" class="on">Male</button>
+          <button type="button" data-g="1">Female</button>
+        </div>
+      </div>
+      <div id="f-nat-wrap"><label for="f-nat">Nationality</label></div>
+      <div class="note"><svg><use href="#i-info"/></svg><div>Name and birth date go on your ID card. Only staff can change them later.</div></div>
+    </form>
+
+    <div id="stagebox2" style="position:absolute;left:700px;top:150px;width:520px;height:780px">
+      <div id="drag2" style="position:absolute;inset:0 0 140px 0;cursor:grab" aria-hidden="true"></div>
+      <div class="tools" id="tools-create"></div>
+    </div>
+
+    <aside id="build" class="panel">
+      <div class="sec">BUILD</div>
+      <div id="height-wrap">
+        <label for="f-height" class="range"><span>Height</span><span id="f-height-v"></span></label>
+        <input id="f-height" type="range" min="107" max="213" value="175">
+      </div>
+      <div class="sec">WHAT HAPPENS NEXT</div>
+      <ol class="steps">
+        <li><b>1</b><div>You arrive in the city<em>The airport is the first stop for every new character.</em></div></li>
+        <li><b>2</b><div>Pick your look<em>Face, hair, skin and clothes open straight away in the clothing creator.</em></div></li>
+        <li><b>3</b><div>Start playing<em>Your ID card and starter items are already in your pockets.</em></div></li>
+      </ol>
+      <div class="grow"></div>
+      <div id="err" role="alert"></div>
+    </aside>
+
+    <div id="create-actions">
+      <button type="button" class="btn" id="b-back"><svg class="ic"><use href="#i-left"/></svg>Back</button>
+      <button type="button" class="btn primary" id="b-create">CREATE CHARACTER<svg class="ic"><use href="#i-arrow"/></svg></button>
+    </div>
+  </section>
+
+  <!-- delete confirm -->
+  <section class="view" id="v-delete" hidden>
+    <div id="dlg">
+      <div class="box panel">
+        <div class="kicker" style="color:var(--danger)">DELETE CHARACTER</div>
+        <h2 id="del-name"></h2>
+        <p>This permanently removes the character, their items, vehicles and money. It cannot be undone.</p>
+        <div class="two">
+          <button type="button" class="btn" id="del-no">Cancel</button>
+          <button type="button" class="btn solid-danger" id="del-yes">Delete</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- spawn -->
+  <section class="view" id="v-spawn" hidden>
+    <div id="mapwrap">
+      <div id="map"><img src="map.jpg" alt="" draggable="false"></div>
+    </div>
+    <div id="mapshade"></div>
+
+    <div class="brand"><i></i><b>VALRAVN</b></div>
+    <div id="who"><div class="avatar" id="who-i"></div><b id="who-n"></b><span id="who-c"></span></div>
+
+    <div id="zoom">
+      <button type="button" id="z-in" aria-label="Zoom in"><svg><use href="#i-plus"/></svg></button>
+      <button type="button" id="z-out" aria-label="Zoom out"><svg><use href="#i-minus"/></svg></button>
+      <button type="button" id="z-fit" aria-label="Show everything"><svg><use href="#i-fit"/></svg></button>
+    </div>
+
+    <div id="spawnlist" class="panel">
+      <div class="kicker">SPAWN</div>
+      <h1>Where to?</h1>
+      <div id="rows"></div>
+    </div>
+
+    <div id="pick" class="panel">
+      <div class="kicker">SELECTED</div>
+      <h2 id="pk-t"></h2>
+      <p id="pk-s"></p>
+      <div class="kvs" id="pk-kv"></div>
+      <button type="button" class="btn primary" id="b-spawn">SPAWN HERE<svg class="ic"><use href="#i-arrow"/></svg></button>
+    </div>
+
+    <div class="hints">
+      <span id="h-back"><kbd>BACKSPACE</kbd>Change character</span>
+      <span><kbd>↑ ↓</kbd>Browse</span>
+      <span><kbd>ENTER</kbd>Spawn</span>
+      <span><kbd>DRAG / SCROLL</kbd>Pan and zoom the map</span>
+    </div>
+  </section>
+
+  <!-- loading -->
+  <section class="view" id="v-loading" hidden>
+    <div id="loading"><div class="t" id="load-t">Retrieving your characters</div><div class="bar"><i></i></div></div>
+  </section>
+
+</div>
+
+<script src="profanity.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

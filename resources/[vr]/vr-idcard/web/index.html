@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div id="vr-idcard">
+    <div class="card-texture"></div>
+
+    <div id="badge">
+      <img id="badgeimg" src="" alt="">
+      <span id="badgegrade"></span>
+    </div>
+
+    <div class="card-header">
+      <div class="card-header-text">
+        <span id="lang_header" class="city-name"></span>
+        <span id="cardtype" class="card-type"></span>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="photo-section">
+        <img id="mugshot" src="" alt="">
+      </div>
+
+      <div class="info-section">
+        <div class="info-row">
+          <span id="lang_lastname" class="label"></span>
+          <span id="lastname" class="value"></span>
+        </div>
+        <div class="info-row">
+          <span id="lang_firstname" class="label"></span>
+          <span id="name" class="value"></span>
+        </div>
+        <div class="info-row">
+          <span id="lang_dob" class="label"></span>
+          <span id="dob" class="value"></span>
+        </div>
+        <div class="info-row">
+          <span id="lang_sex" class="label"></span>
+          <span id="sex" class="value"></span>
+        </div>
+        <div class="info-row">
+          <span id="lang_nat" class="label"></span>
+          <span id="nationality" class="value"></span>
+        </div>
+        <div class="info-row" id="heightrow">
+          <span id="lang_height" class="label"></span>
+          <span id="height" class="value"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <span id="sign" class="signature"></span>
+      <div class="footer-icons">
+        <img id="smallmugshot" src="" alt="">
+        <img src="assets/flags/32.png" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script defer src="dist/main.js"></script>
+  <script>
+    window.addEventListener('message', ({ data }) => {
+      if (data.type === 'playerData') {
+        const img = document.getElementById("mugshot");
+        img.onerror = function () {
+          this.onerror = null;
+          this.removeAttribute("src");
+        };
+      }
+    });
+  </script>
+</body>
+
+</html>

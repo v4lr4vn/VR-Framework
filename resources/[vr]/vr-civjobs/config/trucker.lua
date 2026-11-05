@@ -1,0 +1,31 @@
+Config.Jobs.trucker = {
+    label = 'Trucker',
+    job = 'trucker',
+    icon = 'fa-truck-front',
+    description = 'Collect a trailer, haul it across the map and bring the cab back',
+    depot = {
+        ped = 's_m_m_trucker_01',
+        coords = vec4(153.7, -3077.3, 5.9, 273.5),
+        blip = { sprite = 477, colour = 5, scale = 0.8, label = 'Haulage Depot' },
+    },
+    vehicle = {
+        cab = 'hauler',
+        coords = vec4(141.2, -3090.0, 5.9, 270.0),
+        returnRadius = 45.0,
+    },
+    perHundredMetres = 9.0,
+    perHundredGrowth = 1.02,
+    xpPerHundredMetres = 8.0,
+    illegalChance = 20,
+    illegalMultiplier = 2.0,
+    policeAlertChance = 60,
+    deliverRange = 25.0,
+    returnBonus = 100,
+    contracts = {
+        { id = 'groceries', label = 'Supermarket pallets', cargo = 'Groceries', trailer = 'trailers2', level = 1, to = vec3(-61.0, -1832.0, 26.8), base = 250 },
+        { id = 'timber', label = 'Timber shipment', cargo = 'Timber', trailer = 'trailers', level = 2, to = vec3(1197.0, -1264.0, 35.2), base = 350 },
+        { id = 'fuel_sandy', label = 'Fuel for Sandy Shores', cargo = 'Fuel', trailer = 'tanker', level = 4, to = vec3(2005.0, 3774.0, 32.2), base = 600 },
+        { id = 'fuel_paleto', label = 'Fuel for Paleto', cargo = 'Fuel', trailer = 'tanker', level = 6, to = vec3(179.0, 6606.0, 31.9), base = 900 },
+        { id = 'cars_lsia', label = 'Vehicle carrier', cargo = 'Vehicles', trailer = 'tr4', level = 8, to = vec3(-1146.0, -2043.0, 13.2), base = 500 },
+    },
+}

@@ -1,0 +1,17 @@
+{
+  "unlocked_door": "Door unlocked",
+  "locked_door": "Door locked",
+  "lock_door": "[E] Lock door",
+  "unlock_door": "[E] Unlock door",
+  "door_lock": "Door lock",
+  "passcode": "Passcode",
+  "lockpick_broke": "Your lockpick broke",
+  "pick_lock": "Pick lock",
+  "cannot_unlock": "You can't unlock this door",
+  "cannot_lock": "You can't lock this door",
+  "create_modify_lock": "Create a door lock, or edit an existing one",
+  "command_closest": "Open the editor on the closest door",
+  "add_door_textui": "**New door**  \n[LMB] Select door  \n[RMB] Cancel",
+  "door_created": "Door lock created",
+  "invalid_door": "That door is missing a model or position"
+}

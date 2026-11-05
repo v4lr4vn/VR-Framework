@@ -1,0 +1,15 @@
+export default {
+  chevronup: ['m6 15 6-6 6 6'],
+  unlock: ['M6 11h12v10H6z', 'M8 11V7a4 4 0 0 1 7.5-2'],
+  tag: ['M3 12V4h8l10 10-8 8L3 12Z', 'circle:7.5,8.5,1.5'],
+  evidence: ['M6 3h12v18H6z', 'M6 8h12', 'M10 3v5', 'M9 13h6M9 17h4'],
+  userplus: ['circle:10,8,4', 'M3 21a7 7 0 0 1 14 0', 'M19 8v6M16 11h6'],
+  sentence: ['M5 21h14', 'M12 3v14', 'M7 7l5-4 5 4', 'M8 12h8'],
+  photo: ['M4 7h3l2-3h6l2 3h3v13H4z', 'circle:12,13,4'],
+  plate: ['M3 7h18v10H3z', 'M7 12h2M11 12h2M15 12h2'],
+  hash: ['M5 9h14M5 15h14M10 4 8 20M16 4l-2 16'],
+  arrowleft: ['M19 12H5', 'm11 6-6 6 6 6'],
+  arrowright: ['M5 12h14', 'm13 6 6 6-6 6'],
+  save: ['M5 3h11l3 3v15H5z', 'M8 3v5h7V3', 'M8 21v-7h8v7'],
+  stash: ['M4 7h16v13H4z', 'M4 7l2-3h12l2 3', 'M10 11h4'],
+};

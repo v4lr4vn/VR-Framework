@@ -1,0 +1,19 @@
+-- An example of an app for the phone, made as its own resource.
+-- Copy this folder into your resources, rename this file to fxmanifest.lua and start the resource after vr-phone.
+fx_version 'cerulean'
+game 'gta5'
+lua54 'yes'
+
+name 'hello-app'
+description 'Example app for vr-phone'
+
+dependencies { 'vr-lib', 'vr-phone' }
+
+shared_script '@vr-lib/init.lua'
+
+server_script 'server.lua'
+client_script 'client.lua'
+
+-- The page of the app, and anything it loads. It must be in `files`.
+ui_page 'ui/index.html'
+files { 'ui/index.html' }

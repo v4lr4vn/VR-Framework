@@ -1,0 +1,40 @@
+Config.Jobs.hunter = {
+    label = 'Hunter',
+    job = 'hunter',
+    icon = 'fa-crosshairs',
+    description = 'Track game in the wilderness, skin what you shoot and sell it to the butcher',
+    depot = {
+        ped = 'ig_hunter',
+        coords = vec4(-679.1, 5839.5, 17.3, 150.0),
+        blip = { sprite = 442, colour = 2, scale = 0.8, label = 'Hunting Lodge' },
+    },
+    weapon = { name = 'WEAPON_MUSKET', item = 'weapon_musket', ammo = 30 },
+    knifeSeconds = 9,
+    skinRange = 3.0,
+    minSecondsBetweenSkins = 6,
+    animalRespawnSeconds = 120,
+    animalCount = 8,
+    levelBonusPerLevel = 0.5,
+    zones = {
+        { label = 'Cassidy Creek woods', center = vec3(-1210.0, 4590.0, 165.0), radius = 260.0 },
+        { label = 'Raton Canyon ridge', center = vec3(-580.0, 4650.0, 140.0), radius = 240.0 },
+    },
+    animals = {
+        boar = { model = 'a_c_boar', label = 'Boar', meat = 'meat_boar', pelt = 'pelt_boar', meatAmount = { 2, 4 }, peltChance = 55 },
+        deer = { model = 'a_c_deer', label = 'Deer', meat = 'meat_deer', pelt = 'pelt_deer', meatAmount = { 3, 5 }, peltChance = 60 },
+        coyote = { model = 'a_c_coyote', label = 'Coyote', meat = 'meat_coyote', pelt = 'pelt_coyote', meatAmount = { 1, 2 }, peltChance = 65 },
+        rabbit = { model = 'a_c_rabbit_01', label = 'Rabbit', meat = 'meat_rabbit', pelt = nil, meatAmount = { 1, 2 }, peltChance = 0 },
+        cougar = { model = 'a_c_mtlion', label = 'Mountain lion', meat = nil, pelt = 'pelt_cougar', meatAmount = { 0, 0 }, peltChance = 90 },
+    },
+    spawnWeights = { boar = 30, deer = 30, coyote = 20, rabbit = 15, cougar = 5 },
+    prices = {
+        meat_boar = 28, meat_deer = 35, meat_coyote = 18, meat_rabbit = 12,
+        pelt_boar = 70, pelt_deer = 95, pelt_coyote = 80, pelt_cougar = 260,
+    },
+    contracts = {
+        { id = 'pest', label = 'Pest control', level = 1, pay = 300, xp = 400, needs = { boar = 2 } },
+        { id = 'larder', label = 'Stock the larder', level = 2, pay = 520, xp = 800, needs = { deer = 2, rabbit = 2 } },
+        { id = 'predators', label = 'Predator watch', level = 4, pay = 900, xp = 1500, needs = { coyote = 2, boar = 2 } },
+        { id = 'trophy', label = 'Trophy order', level = 7, pay = 1800, xp = 3000, needs = { cougar = 1, deer = 2 } },
+    },
+}

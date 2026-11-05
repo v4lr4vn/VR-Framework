@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Camera</title>
+		<link rel="stylesheet" href="vendor/fonts.css" />
+		<link rel="stylesheet" href="vendor/fontawesome.min.css" />
+		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="vendor/bootstrap.min.css" />
+		<script src="vendor/jquery.min.js"></script>
+		
+	</head>
+	<body>
+		<div class="container">
+			<div class="picture-container hide">
+				<div class="picture"></div>
+				<div class="info">
+				<p>Location</p>
+				<p id="location">Unknown</p>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="camera-overlay hide" id="camera-overlay">
+			<div class="frame">
+				<div class="frame-horizontal">
+					<div class="left-border"></div>
+					<div class="right-border"></div>
+				</div>
+				<div class="frame-vertical">
+					<div class="top-border"></div>
+					<div class="bottom-border"></div>
+				</div>
+				<div class="status-bar">
+					<div class="battery-life">
+						<i class="fa-solid fa-battery-three-quarters icon"></i>
+						<span>69%</span><b id="flashstatus" class="off"><i class="fa-solid fa-bolt"></i></b>
+					</div>
+					<div class="recording-info">
+						<span>00:04:20:69</span>
+						<span>REC</span>
+						<i class="fa-solid fa-circle icon fa-beat"></i>
+					</div>
+				</div>
+
+				<div class="camera-info">
+					<div class="shutter-info">
+						<span>FULL HD</span><span>60 FPS</span
+						><span>ISO200</span><span>1/250</span>
+					</div>
+					<div class="zoom-info">
+						<i class="fa-solid fa-magnifying-glass-plus"></i>
+						<span>1X ZOOM</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="app.js"></script>
+	</body>
+</html>

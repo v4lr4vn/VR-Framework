@@ -1,0 +1,174 @@
+local CreatePed = CreatePed
+local SetEntityInvincible = SetEntityInvincible
+local SetModelAsNoLongerNeeded = SetModelAsNoLongerNeeded
+local CreateVehicle = CreateVehicle
+local SetVehicleNeedsToBeHotwired = SetVehicleNeedsToBeHotwired
+local NetworkFadeInEntity = NetworkFadeInEntity
+local AddBlipForCoord = AddBlipForCoord
+local SetBlipSprite = SetBlipSprite
+local SetBlipDisplay = SetBlipDisplay
+local SetBlipScale = SetBlipScale
+local SetBlipColour = SetBlipColour
+local SetBlipAsShortRange = SetBlipAsShortRange
+local BeginTextCommandSetBlipName = BeginTextCommandSetBlipName
+local AddTextComponentString = AddTextComponentString
+local EndTextCommandSetBlipName = EndTextCommandSetBlipName
+local GetEntityCoords = GetEntityCoords
+local PlayerPedId = PlayerPedId
+local TriggerServerEvent = TriggerServerEvent
+local DoScreenFadeOut = DoScreenFadeOut
+local DoScreenFadeIn = DoScreenFadeIn
+local IsScreenFadedOut = IsScreenFadedOut
+local IsScreenFadedIn = IsScreenFadedIn
+
+utils = {}
+peds = {}
+
+function utils.showNotification(msg, type)
+    lib.notify({
+        title = locale('notification_title'),
+        description = msg,
+        type = type and type or 'info'
+    })
+end
+
+local debug = lib.load("config").debug
+
+function utils.debug(...)
+    if debug then
+        local args = { ... }
+
+        for i = 1, #args do
+            local arg = args[i]
+            args[i] = type(arg) == 'table' and json.encode(arg, { sort_keys = true, indent = true }) or tostring(arg)
+        end
+
+        print('^6[DEBUG] ^7', table.concat(args, '\t'))
+    end
+end
+
+function utils.createPed(name, ...)
+    local model = lib.requestModel(name)
+
+    if not model then return end
+
+    local ped = CreatePed(0, model, ...)
+
+    SetEntityInvincible(ped, true)
+    SetModelAsNoLongerNeeded(model)
+
+    table.insert(peds, ped)
+
+    return ped
+end
+
+function utils.createVehicle(name, ...)
+    local model = lib.requestModel(name)
+
+    if not model then return end
+
+    local vehicle = CreateVehicle(model, ...)
+
+    SetVehicleNeedsToBeHotwired(vehicle, false)
+    NetworkFadeInEntity(vehicle, true)
+    SetModelAsNoLongerNeeded(model)
+
+    return vehicle
+end
+
+function utils.createBlip(data)
+    local blip = AddBlipForCoord(data.pos)
+    SetBlipSprite(blip, data.type)
+    SetBlipDisplay(blip, 6)
+    SetBlipScale(blip, data.scale)
+    SetBlipColour(blip, data.color)
+    SetBlipAsShortRange(blip, true)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString(data.name)
+    EndTextCommandSetBlipName(blip)
+
+    return blip
+end
+
+function utils.getClosestHospital()
+    local closestHospital = nil
+    local playerPed = cache.ped or PlayerPedId()
+    local playerCoords = cache.coords or GetEntityCoords(playerPed)
+    local minDist = 999999
+
+    for k, v in pairs(lib.load("data.hospitals")) do
+        local hospitalCoords = v.zone.pos
+        local dist = #(playerCoords - hospitalCoords)
+
+        if dist < minDist then
+            minDist = dist
+            closestHospital = v
+        end
+    end
+
+    return closestHospital
+end
+
+local consumeItemPerUse = lib.load("config").consumeItemPerUse
+
+function utils.canUseItem(name)
+    local slots = exports['vr-inventory']:GetSlotsWithItem(name)
+    if type(slots) ~= "table" or #slots == 0 then return false, "not_enough_" .. name end
+
+    for i = 1, #slots do
+        local durability = slots[i].metadata and tonumber(slots[i].metadata.durability) or 100
+        if durability >= consumeItemPerUse then return true end
+    end
+
+    return false, "no_durability"
+end
+
+function utils.isBedOccupied(coords)
+    local playerId, playerPed, playerCoords = lib.getClosestPlayer(coords.xyz, 1.5, true)
+    if not playerPed then return false end
+    if IsEntityPlayingAnim(playerPed, "anim@gangops@morgue@table@", "body_search", 3) or IsEntityPlayingAnim(playerPed, "switch@franklin@bed", "sleep_getup_rubeyes", 3) then return true end
+
+    return false
+end
+
+function utils.inHospitalZone(playerPos, boxPos, boxSize)
+    local xInside = playerPos.x >= boxPos.x - boxSize.x / 2 and playerPos.x <= boxPos.x + boxSize.x / 2
+    local yInside = playerPos.y >= boxPos.y - boxSize.y / 2 and playerPos.y <= boxPos.y + boxSize.y / 2
+    local zInside = playerPos.z >= boxPos.z - boxSize.z / 2 and playerPos.z <= boxPos.z + boxSize.z / 2
+
+    return xInside and yInside and zInside
+end
+
+function utils.drawTextFrame(data)
+    SetTextFont(4)
+    SetTextScale(0.0, 0.5)
+    SetTextColour(255, 255, 255, 255)
+    SetTextDropshadow(0, 0, 0, 0, 255)
+    SetTextDropShadow()
+    SetTextOutline()
+    SetTextCentre(true)
+
+    SetTextEntry('STRING')
+    AddTextComponentString(data.msg)
+    DrawText(data.x, data.y)
+end
+
+function utils.doScreenFadeOut(duration, wait)
+    DoScreenFadeOut(duration or 800)
+
+    if not wait then return end
+    while not IsScreenFadedOut() do
+        Wait(50)
+    end
+end
+
+function utils.doScreenFadeIn(duration, wait)
+    DoScreenFadeIn(duration or 800)
+
+    if not wait then return end
+    while not IsScreenFadedIn() do
+        Wait(50)
+    end
+end
+
+RegisterNetEvent('vr-ambulancejob:showNotification', utils.showNotification)

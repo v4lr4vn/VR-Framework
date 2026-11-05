@@ -1,0 +1,16 @@
+export default {
+  wanted: ['M12 3 2 20h20L12 3Z', 'M12 10v4M12 17h.01'],
+  cuffs: ['circle:7,15,4', 'circle:17,15,4', 'M10 12l4-4M9 7h6'],
+  idcard: ['M3 6h18v12H3z', 'circle:8.5,11,2', 'M5.5 16a3 3 0 0 1 6 0', 'M14 10h4M14 14h3'],
+  droplet: ['M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z'],
+  tag: ['M3 12V4h8l10 10-8 8L3 12Z', 'circle:7.5,8.5,1.5'],
+  hourglass: ['M6 3h12M6 21h12', 'M7 3c0 5 10 5 10 9s-10 4-10 9', 'M17 3c0 5-10 5-10 9s10 4 10 9'],
+  unlock: ['M6 11h12v10H6z', 'M8 11V7a4 4 0 0 1 7.5-2'],
+  gun: ['M3 9h15l2 2v2H11l-1 3H6l1-3H3z', 'M18 9V7'],
+  doc: ['M7 3h7l5 5v13H7z', 'M14 3v5h5'],
+  history: ['M3 12a9 9 0 1 0 3-6.7', 'M3 4v5h5', 'M12 8v4l3 2'],
+  send: ['m4 12 16-8-6 16-2-6-8-2Z'],
+  ban: ['circle:12,12,9', 'M6 6l12 12'],
+  plate: ['M3 7h18v10H3z', 'M7 12h.01M17 12h.01M10 12h4'],
+  camera2: ['M4 8h3l2-3h6l2 3h3v11H4z', 'circle:12,13,3.5'],
+};
