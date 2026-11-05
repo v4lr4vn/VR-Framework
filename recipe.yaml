@@ -5,7 +5,7 @@ description: >-
   ALPHA: Full FiveM roleplay framework: vr-core, the vr-bridge adapter, the Night Shift
   interface and 50+ gameplay resources. Needs only an empty database.
 
-$engine: 2
+$engine: 3
 $minFxVersion: 5000
 $onesync: on
 
