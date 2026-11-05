@@ -2,10 +2,6 @@
 
 Emotes, dances, prop emotes, shared emotes, walking styles and moods. It replaces WC Emotes V5 and uses its emote list and streamed props.
 
-## Credits and licence
-
-Based on [rpemotes](https://github.com/TayMcKenzieNZ/rpemotes) by TayMcKenzieNZ and contributors, through WC Emotes V5 by White Custom. The emote list in `shared/animations.lua` and the crouch, crawl, pointing, binocular and news camera code come from those projects. Custom animations and props belong to their creators. The licence is GPL-3.0, see `LICENSE`.
-
 ## What players get
 
 - **Emote menu:** `/emotes` or the menu key. Tabs for Favourites, Quick slots, Emotes, Dances, Props, Shared, Custom, Walks and Moods, plus Animals when the player is a dog. Search covers every emote.
