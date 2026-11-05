@@ -1,5 +1,8 @@
 # ValRavn Framework
 
+
+TXAdmin YAML easy download --- https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/recipe.yaml?v=7
+
 A complete, self-contained FiveM roleplay framework. One core (`vr-core`), one shared look (**Night Shift**), one bridge so scripts don't care which framework they run on, and 53 `vr-` resources on top: jobs, economy, housing, vehicles, law enforcement, medical, businesses and tools that let admins build the world without touching config files.
 
 > **Alpha release (v1.0.0-alpha.1).** This is not finished. Expect bugs, missing polish and breaking changes between releases, and do not run it on a live community yet. Most features were developed against test harnesses and then checked on a live server by the author; the newest work (everything in [Testing status](#testing-status)) has not had a full in-game pass. Read [Known limitations](#known-limitations) before you build on it, and please report what you find.
