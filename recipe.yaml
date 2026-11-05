@@ -21,14 +21,13 @@ tasks:
     src: ./tmp/cfx-server-data/resources
     dest: ./resources
 
-  # The ValRavn Framework: one download per resource from the GitHub release.
-  # Each zip holds a single resource folder and unzips into [important] or [vr].
-  # Release files start downloading straight away. To publish a new version,
-  # replace v1.0.0-alpha.1 in the urls below with the new tag.
+  # The ValRavn Framework: one download per resource, from the release/ folder of
+  # this repository. Each zip holds one resource folder and unzips into [important]
+  # or [vr]. vr-emotes is split in two because GitHub rejects files over 100 MB.
 
   ## resources/[important]
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/bob74_ipl.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/bob74_ipl.zip
     path: ./tmp/bob74_ipl.zip
     timeoutSeconds: 600
   - action: unzip
@@ -36,7 +35,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/fivem-freecam.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/fivem-freecam.zip
     path: ./tmp/fivem-freecam.zip
     timeoutSeconds: 600
   - action: unzip
@@ -44,7 +43,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-bridge.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-bridge.zip
     path: ./tmp/vr-bridge.zip
     timeoutSeconds: 600
   - action: unzip
@@ -52,7 +51,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-core.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-core.zip
     path: ./tmp/vr-core.zip
     timeoutSeconds: 600
   - action: unzip
@@ -60,7 +59,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-inventory.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-inventory.zip
     path: ./tmp/vr-inventory.zip
     timeoutSeconds: 600
   - action: unzip
@@ -68,7 +67,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-keybinds.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-keybinds.zip
     path: ./tmp/vr-keybinds.zip
     timeoutSeconds: 600
   - action: unzip
@@ -76,7 +75,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-lib.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-lib.zip
     path: ./tmp/vr-lib.zip
     timeoutSeconds: 600
   - action: unzip
@@ -84,7 +83,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-mysql.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-mysql.zip
     path: ./tmp/vr-mysql.zip
     timeoutSeconds: 600
   - action: unzip
@@ -92,7 +91,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-target.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-target.zip
     path: ./tmp/vr-target.zip
     timeoutSeconds: 600
   - action: unzip
@@ -100,7 +99,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-ui.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-ui.zip
     path: ./tmp/vr-ui.zip
     timeoutSeconds: 600
   - action: unzip
@@ -108,7 +107,7 @@ tasks:
     dest: ./resources/[important]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-voice.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-voice.zip
     path: ./tmp/vr-voice.zip
     timeoutSeconds: 600
   - action: unzip
@@ -118,7 +117,7 @@ tasks:
 
   ## resources/[vr]
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/screenshot-basic.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/screenshot-basic.zip
     path: ./tmp/screenshot-basic.zip
     timeoutSeconds: 600
   - action: unzip
@@ -126,7 +125,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-adminmenu.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-adminmenu.zip
     path: ./tmp/vr-adminmenu.zip
     timeoutSeconds: 600
   - action: unzip
@@ -134,7 +133,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-admintools.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-admintools.zip
     path: ./tmp/vr-admintools.zip
     timeoutSeconds: 600
   - action: unzip
@@ -142,7 +141,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-ambulancejob.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-ambulancejob.zip
     path: ./tmp/vr-ambulancejob.zip
     timeoutSeconds: 600
   - action: unzip
@@ -150,7 +149,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-bankheist.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-bankheist.zip
     path: ./tmp/vr-bankheist.zip
     timeoutSeconds: 600
   - action: unzip
@@ -158,7 +157,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-banking.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-banking.zip
     path: ./tmp/vr-banking.zip
     timeoutSeconds: 600
   - action: unzip
@@ -166,7 +165,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-buffs.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-buffs.zip
     path: ./tmp/vr-buffs.zip
     timeoutSeconds: 600
   - action: unzip
@@ -174,7 +173,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-camera.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-camera.zip
     path: ./tmp/vr-camera.zip
     timeoutSeconds: 600
   - action: unzip
@@ -182,7 +181,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-cards.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-cards.zip
     path: ./tmp/vr-cards.zip
     timeoutSeconds: 600
   - action: unzip
@@ -190,7 +189,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-cityhall.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-cityhall.zip
     path: ./tmp/vr-cityhall.zip
     timeoutSeconds: 600
   - action: unzip
@@ -198,7 +197,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-civjobs.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-civjobs.zip
     path: ./tmp/vr-civjobs.zip
     timeoutSeconds: 600
   - action: unzip
@@ -206,7 +205,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-clothing.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-clothing.zip
     path: ./tmp/vr-clothing.zip
     timeoutSeconds: 600
   - action: unzip
@@ -214,7 +213,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-dealership.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-dealership.zip
     path: ./tmp/vr-dealership.zip
     timeoutSeconds: 600
   - action: unzip
@@ -222,7 +221,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-discord.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-discord.zip
     path: ./tmp/vr-discord.zip
     timeoutSeconds: 600
   - action: unzip
@@ -230,7 +229,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-djbooth.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-djbooth.zip
     path: ./tmp/vr-djbooth.zip
     timeoutSeconds: 600
   - action: unzip
@@ -238,7 +237,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-doorlock.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-doorlock.zip
     path: ./tmp/vr-doorlock.zip
     timeoutSeconds: 600
   - action: unzip
@@ -246,15 +245,23 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-emotes.zip
-    path: ./tmp/vr-emotes.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-emotes-1.zip
+    path: ./tmp/vr-emotes-1.zip
     timeoutSeconds: 600
   - action: unzip
-    src: ./tmp/vr-emotes.zip
+    src: ./tmp/vr-emotes-1.zip
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-farming.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-emotes-2.zip
+    path: ./tmp/vr-emotes-2.zip
+    timeoutSeconds: 600
+  - action: unzip
+    src: ./tmp/vr-emotes-2.zip
+    dest: ./resources/[vr]
+
+  - action: download_file
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-farming.zip
     path: ./tmp/vr-farming.zip
     timeoutSeconds: 600
   - action: unzip
@@ -262,7 +269,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-fence.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-fence.zip
     path: ./tmp/vr-fence.zip
     timeoutSeconds: 600
   - action: unzip
@@ -270,7 +277,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-fuel.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-fuel.zip
     path: ./tmp/vr-fuel.zip
     timeoutSeconds: 600
   - action: unzip
@@ -278,7 +285,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-garages.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-garages.zip
     path: ./tmp/vr-garages.zip
     timeoutSeconds: 600
   - action: unzip
@@ -286,7 +293,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-housing.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-housing.zip
     path: ./tmp/vr-housing.zip
     timeoutSeconds: 600
   - action: unzip
@@ -294,7 +301,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-hud.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-hud.zip
     path: ./tmp/vr-hud.zip
     timeoutSeconds: 600
   - action: unzip
@@ -302,7 +309,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-idcard.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-idcard.zip
     path: ./tmp/vr-idcard.zip
     timeoutSeconds: 600
   - action: unzip
@@ -310,7 +317,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-loading.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-loading.zip
     path: ./tmp/vr-loading.zip
     timeoutSeconds: 600
   - action: unzip
@@ -318,7 +325,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-mdt.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-mdt.zip
     path: ./tmp/vr-mdt.zip
     timeoutSeconds: 600
   - action: unzip
@@ -326,7 +333,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-mechanic.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-mechanic.zip
     path: ./tmp/vr-mechanic.zip
     timeoutSeconds: 600
   - action: unzip
@@ -334,7 +341,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-microphone.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-microphone.zip
     path: ./tmp/vr-microphone.zip
     timeoutSeconds: 600
   - action: unzip
@@ -342,7 +349,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-mining.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-mining.zip
     path: ./tmp/vr-mining.zip
     timeoutSeconds: 600
   - action: unzip
@@ -350,7 +357,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-multicharacter.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-multicharacter.zip
     path: ./tmp/vr-multicharacter.zip
     timeoutSeconds: 600
   - action: unzip
@@ -358,7 +365,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-multijob.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-multijob.zip
     path: ./tmp/vr-multijob.zip
     timeoutSeconds: 600
   - action: unzip
@@ -366,7 +373,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-noIdlecam.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-noIdlecam.zip
     path: ./tmp/vr-noIdlecam.zip
     timeoutSeconds: 600
   - action: unzip
@@ -374,7 +381,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-notepad.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-notepad.zip
     path: ./tmp/vr-notepad.zip
     timeoutSeconds: 600
   - action: unzip
@@ -382,7 +389,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-pause.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-pause.zip
     path: ./tmp/vr-pause.zip
     timeoutSeconds: 600
   - action: unzip
@@ -390,7 +397,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-pedscale.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-pedscale.zip
     path: ./tmp/vr-pedscale.zip
     timeoutSeconds: 600
   - action: unzip
@@ -398,7 +405,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-phone.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-phone.zip
     path: ./tmp/vr-phone.zip
     timeoutSeconds: 600
   - action: unzip
@@ -406,7 +413,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-policejob.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-policejob.zip
     path: ./tmp/vr-policejob.zip
     timeoutSeconds: 600
   - action: unzip
@@ -414,7 +421,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-prison.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-prison.zip
     path: ./tmp/vr-prison.zip
     timeoutSeconds: 600
   - action: unzip
@@ -422,7 +429,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-realtor.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-realtor.zip
     path: ./tmp/vr-realtor.zip
     timeoutSeconds: 600
   - action: unzip
@@ -430,7 +437,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-recycle.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-recycle.zip
     path: ./tmp/vr-recycle.zip
     timeoutSeconds: 600
   - action: unzip
@@ -438,7 +445,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-restaurant.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-restaurant.zip
     path: ./tmp/vr-restaurant.zip
     timeoutSeconds: 600
   - action: unzip
@@ -446,7 +453,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-signrobbery.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-signrobbery.zip
     path: ./tmp/vr-signrobbery.zip
     timeoutSeconds: 600
   - action: unzip
@@ -454,7 +461,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-vehiclekeys.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-vehiclekeys.zip
     path: ./tmp/vr-vehiclekeys.zip
     timeoutSeconds: 600
   - action: unzip
@@ -462,7 +469,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-weather.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-weather.zip
     path: ./tmp/vr-weather.zip
     timeoutSeconds: 600
   - action: unzip
@@ -470,7 +477,7 @@ tasks:
     dest: ./resources/[vr]
 
   - action: download_file
-    url: https://github.com/v4lr4vn/VR-Framework/releases/download/v1.0.0-alpha.1/vr-wellness.zip
+    url: https://raw.githubusercontent.com/v4lr4vn/VR-Framework/main/release/vr-wellness.zip
     path: ./tmp/vr-wellness.zip
     timeoutSeconds: 600
   - action: unzip
